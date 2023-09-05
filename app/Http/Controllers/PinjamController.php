@@ -98,7 +98,7 @@ class PinjamController extends Controller
             $post = str_ireplace(array("\r\n"," "),"", $data);
        $respon = $this->post($url,$post,$token,"POST");
        if(!$respon){
-            return return redirect()->route('/');
+            return redirect()->route('/');
         }else{
             return $respon;
         }
@@ -133,7 +133,7 @@ class PinjamController extends Controller
             $post = str_ireplace(array("\r\n"," "),"", $data);
        $respon = $this->post($url,$post,$token,"PUT");
        if(!$respon){
-            return return redirect()->route('/');
+            return redirect()->route('/');
         }else{
             return $respon;
         }

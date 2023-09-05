@@ -23,7 +23,7 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item  has-sub active">
+                <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-house-door text-menu"></i>
                         <span class="text-menu">HOME</span>

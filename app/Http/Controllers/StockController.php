@@ -51,8 +51,8 @@ class StockController extends Controller
         $token  = $request->session()->get('token');
         $stock  = $this->send($url,'',$token);
         $data   = $stock->data->stock;
-        if(!$$data){
-            return return redirect()->route('/');
+        if(!$data){
+            return redirect()->route('/');
         }
         $pdf = PDF::loadview('pages.contents.stock.stock_pdf',['data'=>$data]);
         return $pdf->stream();

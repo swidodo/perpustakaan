@@ -78,7 +78,7 @@ class AnggotaController extends Controller
         $post = str_ireplace(array("\r\n"," "),"", $data);
         $respon = $this->post($url,$post,$token,"POST");
         if(!$respon){
-            return return redirect()->route('/');
+            return redirect()->route('/');
         }
         return $respon;
     }
