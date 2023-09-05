@@ -22,6 +22,8 @@ class AuthController extends Controller
                 'email' => $respon->user->email,
             ]);
            return redirect('/home');
+        }else{
+            return redirect('/');
         }
        
     }
