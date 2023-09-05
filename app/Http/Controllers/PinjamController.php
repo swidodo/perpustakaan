@@ -77,7 +77,6 @@ class PinjamController extends Controller
         $token           = $request->session()->get('token');
         $buku            = $this->send($url1,'',$token);
         $anggota         = $this->send($url2,'',$token);
-
         $data['page']    = 'Create Pinjam Buku';
         $data['buku']    = $buku->data->buku;
         $data['anggota'] = $anggota->data->anggota;
