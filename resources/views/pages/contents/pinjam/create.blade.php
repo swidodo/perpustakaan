@@ -110,7 +110,7 @@
                 <td>`+ $(this).attr('data-penerbit')+`</td>
                 <td>`+ $(this).attr('data-rak')+`</td>
                 <td> 
-                    <input type="number" name="jumlah[]" class="form-control" required>
+                    <input type="number" name="jumlah[]" class="form-control jumlah" id_buku="`+$(this).attr('data-id')+`" required>
                     <input type="hidden" name="id_buku[]" value="`+$(this).attr('data-id')+`">
                 </td>
                 <td> <button class="btn btn-sm btn-danger remove-list" data-id=`+$(this).attr('data-id')+`><i class="bi bi-x-lg"></i></button></td>
@@ -140,6 +140,25 @@
                         $('#form-create-pinjam')[0].reset();
                         window.location.href ="{{URL::to('/pinjam')}}";
                     }
+                }
+            })
+        })
+        $(document).on('change','.jumlah',function(){
+            var id_buku = $(this).attr('id_buku');
+            var jml     = $(this).val();
+            $.ajax({
+                url :"check-stock",
+                type :"post",
+                data :{id_buku : id_buku,jumlah:jml},
+                dataType : 'json',
+                success : function(respon){
+                    if (respon.status == false){
+                        swal.fire({
+                            icon : 'error',
+                            text : 'stock buku yang tersedia '+respon.data.stock
+                        })
+                    }
+                    
                 }
             })
         })

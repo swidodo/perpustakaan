@@ -44,5 +44,6 @@ Route::post('view_trans',[PinjamController::class,'view_trans'])->name('view_tra
 Route::get('/create-transaction',[PinjamController::class,'create_trans_pinjam'])->name('create-transaction');
 Route::post('/store-transaction',[PinjamController::class,'store_transaction'])->name('store-transaction');
 Route::post('/update_trans_pinjam',[PinjamController::class,'update_trans_pinjam'])->name('update_trans_pinjam');
+Route::post('/check-stock',[PinjamController::class,'check_stock'])->name('check-stock');
 // report
 Route::get('/report-stock',[StockController::class,'report_stock'])->name('report-stock');

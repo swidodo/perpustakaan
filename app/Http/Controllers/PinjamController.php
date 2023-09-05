@@ -145,6 +145,15 @@ class PinjamController extends Controller
         $data['detail']  = $mdata->data->detail;
         return response()->json($data);
     }
+    public function check_stock(Request $request){
+        $url      = 'localhost:8080/api/check-stock';
+        $token   = $request->session()->get('token');
+        $data = '{"id_buku":"'.$request->id_buku.'",
+                    "jumlah":"'.$request->jumlah.'"}';
+        $post = str_ireplace(array("\r\n"," "),"", $data);
+        $respon = $this->post($url,$post,$token,"POST");
+        return $respon;
+    }
 }
 
 

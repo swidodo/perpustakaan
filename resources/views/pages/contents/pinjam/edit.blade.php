@@ -71,7 +71,7 @@
                                         <td>
                                             <input type="hidden" name="id[]" value="{{ $lisdtl->id }}">
                                             <input type="hidden" name="id_buku[]" value="{{ $lisdtl->id_buku }}">
-                                            <input type="number" name="jumlah[]" value="{{ $lisdtl->jumlah}}" class="form-control" required>
+                                            <input type="number" name="jumlah[]" value="{{ $lisdtl->jumlah}}" class="form-control jumlah" id_buku="{{ $lisdtl->id_buku }}" required>
                                         </td>
                                         
                                     </tr>
@@ -115,6 +115,26 @@
                         text: respon.message
                     })
                       window.location.href ="{{URL::to('/pinjam')}}";
+                }
+            })
+        })
+        $(document).on('change','.jumlah',function(){
+            var id_buku = $(this).attr('id_buku');
+            var jml     = $(this).val();
+            $.ajax({
+                url :"{{URL::to('/check-stock')}}",
+                type :"post",
+                data :{id_buku : id_buku,jumlah:jml},
+                dataType : 'json',
+                success : function(respon){
+                    if (respon.status == false){
+                        swal.fire({
+                            icon : 'error',
+                            text : 'stock yang tersedia '+respon.data.stock
+                        })
+                        $(this).val(respon.data.stock);
+                    }
+                    
                 }
             })
         })
